@@ -54,6 +54,11 @@ public class Ordine {
             importoBevande += bevanda.getPrezzo();
         }
         double totCoperti = numeroCoperti * costoCoperto;
-        return importoPizze + importoBevande + totCoperti;
+        double importoTotale = importoPizze + importoBevande + totCoperti;
+
+        DecimalFormat df = new DecimalFormat("#,##");
+        importoTotale = Double.parseDouble(df.format(importoTotale));
+
+        return importoTotale;
     }
 }

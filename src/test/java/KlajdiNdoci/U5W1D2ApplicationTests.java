@@ -32,23 +32,23 @@ class U5W1D2ApplicationTests {
 	static void verifyMenuArraysAreFilled(){
 		ctx = new AnnotationConfigApplicationContext(U5W1D2Application.class);
 		menú = (Menú) ctx.getBean("getMenu");
-		assertNotNull(menú.getPizzaList());
+		assertFalse(menú.getPizzaList().isEmpty());
 		log.info("L'array delle pizze nel menú non é nullo");
-		assertNotNull(menú.getBevandaList());
+		assertFalse(menú.getBevandaList().isEmpty());
 		log.info("L'array delle bevande nel menú non é nullo");
 	}
 
 	@Test
 	void verifyOrderArrayIsFilled(){
 		o1 = (Ordine) ctx.getBean("getOrdine");
-		assertNotNull(o1.getPizze());
+		assertFalse(o1.getPizze().isEmpty());
 		log.info("Sono presenti pizze nell'ordine");
 	}
 
 	@Test
 	void testCalcTot(){
 		double result = o1.calcImportoTotale(costoCoperto);
-		assertEquals(18.560000000000002, result);
+		assertEquals(18.56, result);
 		log.info("Somma importo totale: " + result);
 	}
 
@@ -63,7 +63,7 @@ class U5W1D2ApplicationTests {
 	@CsvSource({"2, 18.56", "3, 21.56", "4, 24.56"})
 	void calcThreeTots(int a, double expectedResult){
 		double result = o1.calcImportoTotale(a);
-		assertEquals(expectedResult, result, 0.001);
+		assertEquals(expectedResult, result);
 	}
 
 	@AfterAll
