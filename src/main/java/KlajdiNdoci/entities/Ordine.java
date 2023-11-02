@@ -53,7 +53,7 @@ public class Ordine {
         for (Bevanda bevanda : bevande) {
             importoBevande += bevanda.getPrezzo();
         }
-        int totCoperti = numeroCoperti * costoCoperto;
+        double totCoperti = numeroCoperti * costoCoperto;
         return importoPizze + importoBevande + totCoperti;
     }
 }

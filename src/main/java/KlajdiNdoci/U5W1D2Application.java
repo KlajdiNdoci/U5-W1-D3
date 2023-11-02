@@ -1,9 +1,5 @@
 package KlajdiNdoci;
 
-import KlajdiNdoci.entities.Menú;
-import KlajdiNdoci.entities.Ordine;
-import KlajdiNdoci.entities.Pizza;
-import KlajdiNdoci.entities.Tavolo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
