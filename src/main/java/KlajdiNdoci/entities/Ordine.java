@@ -56,8 +56,8 @@ public class Ordine {
         double totCoperti = numeroCoperti * costoCoperto;
         double importoTotale = importoPizze + importoBevande + totCoperti;
 
-        DecimalFormat df = new DecimalFormat("#,##");
-        importoTotale = Double.parseDouble(df.format(importoTotale));
+        DecimalFormat df = new DecimalFormat("#.##");
+        importoTotale = Double.parseDouble(df.format(importoTotale).replace(',', '.'));
 
         return importoTotale;
     }
