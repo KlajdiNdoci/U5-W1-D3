@@ -27,7 +27,8 @@ public class Ordine {
     private int numeroCoperti;
     private double importoTotale;
 
-    public Ordine(List<Pizza> pizze, List<Bevanda> bevande,int numeroCoperti,@Value("${costo.coperto}")int costoCoperto, Tavolo tavolo ) {
+
+    public Ordine(List<Pizza> pizze, List<Bevanda> bevande, int numeroCoperti, @Value("${costo.coperto}") int costoCoperto, Tavolo tavolo) {
         Random rndm = new Random();
         this.numeroOrdine = rndm.nextInt();
         this.orarioAcquisizione = LocalTime.now();
@@ -40,15 +41,19 @@ public class Ordine {
             this.numeroCoperti = numeroCoperti;
         }
         this.statoOrdine = StatoOrdine.IN_CORSO;
+        this.importoTotale = calcImportoTotale(costoCoperto);
+    }
+
+    public double calcImportoTotale(int costoCoperto) {
         double importoPizze = 0;
         double importoBevande = 0;
-        for (Pizza pizza: pizze) {
+        for (Pizza pizza : pizze) {
             importoPizze += pizza.getPrezzo();
         }
-        for (Bevanda bevanda: bevande) {
+        for (Bevanda bevanda : bevande) {
             importoBevande += bevanda.getPrezzo();
         }
-        int totCoperti = numeroCoperti * costoCoperto;;
-        this.importoTotale = importoPizze + importoBevande + totCoperti;
+        int totCoperti = numeroCoperti * costoCoperto;
+        return importoPizze + importoBevande + totCoperti;
     }
 }

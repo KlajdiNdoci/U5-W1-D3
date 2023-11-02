@@ -73,7 +73,7 @@ public class BeansConfiguration {
 
     @Bean
     Vino vino() {
-        return new Vino("vino", 128, 1.29, 0.75);
+        return new Vino("vino", 128, 7.49, 0.75);
     }
 
     @Bean
